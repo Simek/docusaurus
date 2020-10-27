@@ -33,6 +33,8 @@ export interface PluginOptions {
   blogDescription: string;
   blogSidebarCount: number | 'ALL';
   blogSidebarTitle: string;
+  blogSidebarShowDates: boolean;
+  blogDateFormat: string;
   remarkPlugins: ([Function, object] | Function)[];
   beforeDefaultRehypePlugins: ([Function, object] | Function)[];
   beforeDefaultRemarkPlugins: ([Function, object] | Function)[];
@@ -87,6 +89,7 @@ export interface MetaData {
   source: string;
   description: string;
   date: Date;
+  dateFormat: string;
   tags: (Tag | string)[];
   title: string;
   readingTime?: number;

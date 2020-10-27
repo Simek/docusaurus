@@ -98,6 +98,7 @@ export async function generateBlogPosts(
     truncateMarker,
     showReadingTime,
     editUrl,
+    blogDateFormat,
   } = options;
 
   if (!fs.existsSync(blogDir)) {
@@ -172,6 +173,7 @@ export async function generateBlogPosts(
             ? readingTime(content).minutes
             : undefined,
           truncated: truncateMarker?.test(content) || false,
+          dateFormat: blogDateFormat,
         },
       });
     }),

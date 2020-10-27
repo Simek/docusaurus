@@ -18,7 +18,7 @@ function pluralize(count: number, word: string) {
 }
 
 function BlogTagsPostPage(props: Props): JSX.Element {
-  const {metadata, items, sidebar} = props;
+  const {metadata, items, sidebar, dateFormat} = props;
   const {allTagsPath, name: tagName, count} = metadata;
 
   return (
@@ -28,7 +28,7 @@ function BlogTagsPostPage(props: Props): JSX.Element {
       <div className="container margin-vert--lg">
         <div className="row">
           <div className="col col--2">
-            <BlogSidebar sidebar={sidebar} />
+            <BlogSidebar sidebar={sidebar} dateFormat={dateFormat} />
           </div>
           <main className="col col--8">
             <h1>
@@ -42,6 +42,7 @@ function BlogTagsPostPage(props: Props): JSX.Element {
                   key={BlogPostContent.metadata.permalink}
                   frontMatter={BlogPostContent.frontMatter}
                   metadata={BlogPostContent.metadata}
+                  dateFormat={dateFormat}
                   truncated>
                   <BlogPostContent />
                 </BlogPostItem>

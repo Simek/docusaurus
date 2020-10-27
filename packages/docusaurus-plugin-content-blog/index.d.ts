@@ -9,14 +9,22 @@
 /* eslint-disable camelcase */
 
 declare module '@theme/BlogSidebar' {
-  export type BlogSidebarItem = {title: string; permalink: string};
+  export type BlogSidebarItem = {
+    title: string;
+    permalink: string;
+    date: string;
+  };
+
   export type BlogSidebar = {
     title: string;
+    showDates: boolean;
+    dateFormat: string;
     items: BlogSidebarItem[];
   };
 
   export type Props = {
     readonly sidebar: BlogSidebar;
+    dateFormat: string;
   };
 
   const BlogSidebar: (props: Props) => JSX.Element;
@@ -50,6 +58,7 @@ declare module '@theme/BlogPostPage' {
     readonly editUrl?: string;
     readonly readingTime?: number;
     readonly truncated?: string;
+    readonly dateFormat: string;
     readonly nextItem?: {readonly title: string; readonly permalink: string};
     readonly prevItem?: {readonly title: string; readonly permalink: string};
     readonly tags: readonly {
@@ -67,6 +76,7 @@ declare module '@theme/BlogPostPage' {
 
   export type Props = {
     readonly sidebar: BlogSidebar;
+    readonly dateFormat: string;
     readonly content: Content;
   };
 
@@ -92,6 +102,7 @@ declare module '@theme/BlogListPage' {
     readonly previousPage?: string;
     readonly totalCount: number;
     readonly totalPages: number;
+    readonly dateFormat: string;
   };
 
   export type Props = {
@@ -118,6 +129,7 @@ declare module '@theme/BlogTagsListPage' {
   export type Props = {
     readonly sidebar: BlogSidebar;
     readonly tags: Readonly<Record<string, Tag>>;
+    readonly dateFormat: string;
   };
 
   const BlogTagsListPage: (props: Props) => JSX.Element;
@@ -133,5 +145,6 @@ declare module '@theme/BlogTagsPostsPage' {
     readonly sidebar: BlogSidebar;
     readonly metadata: Tag;
     readonly items: readonly {readonly content: Content}[];
+    readonly dateFormat: string;
   };
 }

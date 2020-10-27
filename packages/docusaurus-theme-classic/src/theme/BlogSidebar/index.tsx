@@ -6,11 +6,13 @@
  */
 
 import React from 'react';
+import dayjs from 'dayjs';
 import Link from '@docusaurus/Link';
 import type {Props} from '@theme/BlogSidebar';
+
 import styles from './styles.module.css';
 
-export default function BlogSidebar({sidebar}: Props) {
+export default function BlogSidebar({sidebar, dateFormat}: Props) {
   if (sidebar.items.length === 0) {
     return null;
   }
@@ -21,6 +23,11 @@ export default function BlogSidebar({sidebar}: Props) {
         {sidebar.items.map((item) => {
           return (
             <li key={item.permalink} className={styles.sidebarItem}>
+              {sidebar.showDates ? (
+                <small className={styles.sidebarItemDate}>
+                  {dayjs(item.date).format(dateFormat)}
+                </small>
+              ) : null}
               <Link
                 isNavLink
                 to={item.permalink}

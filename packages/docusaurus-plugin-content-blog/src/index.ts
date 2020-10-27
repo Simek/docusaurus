@@ -51,6 +51,7 @@ export default function pluginContentBlog(
   const {siteDir, generatedFilesDir} = context;
   const contentPath = path.resolve(siteDir, options.path);
   const pluginId = options.id ?? DEFAULT_PLUGIN_ID;
+  const dateFormat = options.blogDateFormat || 'MMMM D YYYY';
 
   const pluginDataDirRoot = path.join(
     generatedFilesDir,
@@ -108,6 +109,8 @@ export default function pluginContentBlog(
             permalink: nextItem.metadata.permalink,
           };
         }
+
+        blogPost.metadata.dateFormat = dateFormat;
       });
 
       // Blog pagination routes.
@@ -231,9 +234,11 @@ export default function pluginContentBlog(
         JSON.stringify(
           {
             title: options.blogSidebarTitle,
+            showDates: options.blogSidebarShowDates,
             items: sidebarBlogPosts.map((blogPost) => ({
               title: blogPost.metadata.title,
               permalink: blogPost.metadata.permalink,
+              date: blogPost.metadata.date,
             })),
           },
           null,

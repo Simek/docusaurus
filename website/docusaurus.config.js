@@ -82,6 +82,8 @@ module.exports = {
           type: 'all',
           copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
         },
+        blogDateFormat: 'MMMM DD YYYY',
+        blogSidebarShowDates: true,
       },
     ],
     [

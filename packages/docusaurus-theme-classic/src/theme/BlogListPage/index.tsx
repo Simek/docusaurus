@@ -19,7 +19,7 @@ function BlogListPage(props: Props): JSX.Element {
   const {
     siteConfig: {title: siteTitle},
   } = useDocusaurusContext();
-  const {blogDescription, blogTitle, permalink} = metadata;
+  const {blogDescription, blogTitle, permalink, dateFormat} = metadata;
   const isBlogOnlyMode = permalink === '/';
   const title = isBlogOnlyMode ? siteTitle : blogTitle;
   return (
@@ -27,7 +27,7 @@ function BlogListPage(props: Props): JSX.Element {
       <div className="container margin-vert--lg">
         <div className="row">
           <div className="col col--2">
-            <BlogSidebar sidebar={sidebar} />
+            <BlogSidebar sidebar={sidebar} dateFormat={dateFormat} />
           </div>
           <main className="col col--8">
             {items.map(({content: BlogPostContent}) => (
@@ -35,7 +35,8 @@ function BlogListPage(props: Props): JSX.Element {
                 key={BlogPostContent.metadata.permalink}
                 frontMatter={BlogPostContent.frontMatter}
                 metadata={BlogPostContent.metadata}
-                truncated={BlogPostContent.metadata.truncated}>
+                truncated={BlogPostContent.metadata.truncated}
+                dateFormat={dateFormat}>
                 <BlogPostContent />
               </BlogPostItem>
             ))}

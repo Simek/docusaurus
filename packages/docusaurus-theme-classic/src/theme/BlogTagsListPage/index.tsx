@@ -18,7 +18,7 @@ function getCategoryOfTag(tag: string) {
 }
 
 function BlogTagsListPage(props: Props): JSX.Element {
-  const {tags, sidebar} = props;
+  const {tags, sidebar, dateFormat} = props;
 
   const tagCategories: {[category: string]: string[]} = {};
   Object.keys(tags).forEach((tag) => {
@@ -54,7 +54,7 @@ function BlogTagsListPage(props: Props): JSX.Element {
       <div className="container margin-vert--lg">
         <div className="row">
           <div className="col col--2">
-            <BlogSidebar sidebar={sidebar} />
+            <BlogSidebar sidebar={sidebar} dateFormat={dateFormat} />
           </div>
           <main className="col col--8">
             <h1>Tags</h1>

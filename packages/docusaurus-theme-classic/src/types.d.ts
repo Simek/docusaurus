@@ -35,6 +35,7 @@ declare module '@theme/BlogPostItem' {
     readonly truncated?: string | boolean;
     readonly isBlogPostPage?: boolean;
     readonly children: JSX.Element;
+    readonly dateFormat: string;
   };
 
   const BlogPostItem: (props: Props) => JSX.Element;

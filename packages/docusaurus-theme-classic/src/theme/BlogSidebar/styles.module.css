@@ -29,7 +29,12 @@
   margin-bottom: 0.8rem;
 }
 
+.sidebarItemDate {
+  color: var(--ifm-blockquote-color);
+}
+
 .sidebarItemLink {
+  display: list-item;
   color: var(--ifm-font-color-base);
 }
 .sidebarItemLink:hover {

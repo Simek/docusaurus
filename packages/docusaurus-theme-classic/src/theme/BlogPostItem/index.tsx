@@ -7,6 +7,7 @@
 
 import React from 'react';
 import clsx from 'clsx';
+import dayjs from 'dayjs';
 import {MDXProvider} from '@mdx-js/react';
 
 import Head from '@docusaurus/Head';
@@ -17,27 +18,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import styles from './styles.module.css';
 
-const MONTHS = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-
 function BlogPostItem(props: Props): JSX.Element {
   const {
     children,
     frontMatter,
     metadata,
     truncated,
+    dateFormat,
     isBlogPostPage = false,
   } = props;
   const {date, permalink, tags, readingTime} = metadata;
@@ -51,10 +38,7 @@ function BlogPostItem(props: Props): JSX.Element {
 
   const renderPostHeader = () => {
     const TitleHeading = isBlogPostPage ? 'h1' : 'h2';
-    const match = date.substring(0, 10).split('-');
-    const year = match[0];
-    const month = MONTHS[parseInt(match[1], 10) - 1];
-    const day = parseInt(match[2], 10);
+    const postDate = dayjs(date).format(dateFormat);
 
     return (
       <header>
@@ -64,8 +48,8 @@ function BlogPostItem(props: Props): JSX.Element {
         </TitleHeading>
         <div className="margin-vert--md">
           <time dateTime={date} className={styles.blogPostDate}>
-            {month} {day}, {year}{' '}
-            {readingTime && <> · {Math.ceil(readingTime)} min read</>}
+            {postDate}
+            {readingTime && ` · ${Math.ceil(readingTime)} min read`}
           </time>
         </div>
         <div className="avatar margin-vert--md">

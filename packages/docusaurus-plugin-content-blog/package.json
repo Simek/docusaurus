@@ -28,6 +28,7 @@
     "@docusaurus/utils-validation": "2.0.0-alpha.66",
     "@hapi/joi": "^17.1.1",
     "chalk": "^3.0.0",
+    "dayjs": "^1.9.4",
     "feed": "^4.1.0",
     "fs-extra": "^8.1.0",
     "globby": "^10.0.1",

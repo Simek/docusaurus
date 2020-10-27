@@ -17,7 +17,14 @@ import TOC from '@theme/TOC';
 function BlogPostPage(props: Props): JSX.Element {
   const {content: BlogPostContents, sidebar} = props;
   const {frontMatter, metadata} = BlogPostContents;
-  const {title, description, nextItem, prevItem, editUrl} = metadata;
+  const {
+    title,
+    description,
+    nextItem,
+    prevItem,
+    editUrl,
+    dateFormat,
+  } = metadata;
   const {hide_table_of_contents: hideTableOfContents} = frontMatter;
 
   return (
@@ -26,12 +33,13 @@ function BlogPostPage(props: Props): JSX.Element {
         <div className="container margin-vert--lg">
           <div className="row">
             <div className="col col--2">
-              <BlogSidebar sidebar={sidebar} />
+              <BlogSidebar sidebar={sidebar} dateFormat={dateFormat} />
             </div>
             <div className="col col--8">
               <BlogPostItem
                 frontMatter={frontMatter}
                 metadata={metadata}
+                dateFormat={dateFormat}
                 isBlogPostPage>
                 <BlogPostContents />
               </BlogPostItem>
