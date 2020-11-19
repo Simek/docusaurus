@@ -15,6 +15,7 @@ Once your website is bootstrapped, the website source will contain the Docusauru
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
+    "serve": "docusaurus serve",
     "clear": "docusaurus clear"
   }
 }
